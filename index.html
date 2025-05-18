@@ -1,63 +1,146 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smich Studio</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #111;
-      font-family: Arial, sans-serif;
-      color: #ddd;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      color: #b33a3a;
-      text-shadow: 0 0 10px #7a2a2a;
-    }
-    p {
-      font-size: 1.2em;
-      max-width: 600px;
-      margin-bottom: 30px;
-      color: #e0baba;
-    }
-    a {
-      color: #b33a3a;
-      text-decoration: none;
-      border: 1.5px solid #b33a3a;
-      padding: 12px 25px;
-      border-radius: 6px;
-      transition: 0.3s;
-      font-weight: bold;
-    }
-    a:hover {
-      background: #7a2a2a;
-      color: #fff;
-      border-color: #7a2a2a;
-    }
-    footer {
-      margin-top: 40px;
-      font-style: italic;
-      color: #8a5a5a;
-      user-select: none;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smich Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          font-family: 'Inter', sans-serif;
+          background-color: #0f0f0f;
+          color: #ffffff;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          padding: 4rem 2rem;
+          text-align: center;
+          overflow: hidden;
+          position: relative;
+        }
+        h1 {
+          font-size: 4rem;
+          margin-bottom: 1.5rem;
+          color: #FF2138;
+        }
+        p {
+          max-width: 800px;
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+          line-height: 1.6;
+        }
+        .links {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 1rem;
+          justify-content: center;
+          margin-top: 2rem;
+        }
+        .links a {
+          color: #FF2138;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 1rem;
+          background-color: #1a1a1a;
+          padding: 0.75rem 1.25rem;
+          border-radius: 999px;
+          transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .links a:hover {
+          background-color: #2a2a2a;
+          transform: scale(1.05);
+        }
+        .pulse-circle, .extra-circle1, .extra-circle2 {
+          position: absolute;
+          border-radius: 50%;
+          background-color: #FF2138;
+          opacity: 0.3;
+          animation: pulse 6s infinite ease-in-out;
+        }
+        .pulse-circle {
+          width: 120px;
+          height: 120px;
+          bottom: 40px;
+          right: 40px;
+          opacity: 0.5;
+        }
+        .extra-circle1 {
+          width: 180px;
+          height: 180px;
+          top: 10%;
+          left: -60px;
+          animation-delay: 1s;
+        }
+        .extra-circle2 {
+          width: 100px;
+          height: 100px;
+          top: 60%;
+          left: 80%;
+          animation-delay: 2s;
+        }
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 0.3;
+          }
+          50% {
+            transform: scale(1.4);
+            opacity: 0.1;
+          }
+        }
+
+        @media (max-width: 768px) {
+          h1 {
+            font-size: 2.5rem;
+          }
+          p {
+            font-size: 1rem;
+          }
+          .links a {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+          }
+          .pulse-circle {
+            width: 80px;
+            height: 80px;
+            bottom: 20px;
+            right: 20px;
+          }
+          .extra-circle1 {
+            width: 100px;
+            height: 100px;
+            top: 5%;
+            left: -30px;
+          }
+          .extra-circle2 {
+            width: 60px;
+            height: 60px;
+            top: 70%;
+            left: 75%;
+          }
+        }
+    </style>
 </head>
 <body>
-  <h1>Smich Studio</h1>
-  <p>Креативная студия, создающая дизайн, видео и цифровой контент. Мы делаем визуал, который запоминается.</p>
-  <a href="https://t.me/smichstudio">Связаться с нами</a>
-  <footer>Творим круто, потому что иначе — зачем?</footer>
+<h1>Smich Studio</h1>
+<p>Мы создаём визуал, который цепляет: логотипы, баннеры, интерфейсы, презентации. Всё — с вниманием к деталям, стилем и скоростью.</p>
+<p><em>Делай просто. Делай с нами.</em></p>
+<div class="links">
+    <a href="https://t.me/smichstudio" target="_blank">Студия</a>
+    <a href="https://t.me/smichrobot" target="_blank">Бот</a>
+    <a href="https://t.me/smichadmin" target="_blank">Менеджер</a>
+    <a href="https://t.me/tg_chekster" target="_blank">Владелец</a>
+</div>
+<div class="pulse-circle"></div>
+<div class="extra-circle1"></div>
+<div class="extra-circle2"></div>
 </body>
 </html>
