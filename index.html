@@ -7,140 +7,181 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
         body {
-          font-family: 'Inter', sans-serif;
-          background-color: #0f0f0f;
-          color: #ffffff;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          min-height: 100vh;
-          padding: 4rem 2rem;
-          text-align: center;
-          overflow: hidden;
-          position: relative;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f;
+            background-image: radial-gradient(#1a1a1a 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
         }
         h1 {
-          font-size: 4rem;
-          margin-bottom: 1.5rem;
-          color: #FF2138;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #FF2138;
+        }
+        .typing {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            height: 2.5rem;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #FF2138;
+            animation: typing 3s steps(30) 1 normal both, blink 0.8s infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #FF2138; }
         }
         p {
-          max-width: 800px;
-          font-size: 1.25rem;
-          margin-bottom: 1rem;
-          line-height: 1.6;
+            max-width: 800px;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
         }
         .links {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: 1rem;
-          justify-content: center;
-          margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
         }
         .links a {
-          color: #FF2138;
-          text-decoration: none;
-          font-weight: bold;
-          font-size: 1rem;
-          background-color: #1a1a1a;
-          padding: 0.75rem 1.25rem;
-          border-radius: 999px;
-          transition: background 0.3s ease, transform 0.3s ease;
+            color: #FF2138;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            background-color: #1a1a1a;
+            padding: 0.75rem 1.25rem;
+            border-radius: 999px;
+            transition: 0.3s ease;
+            box-shadow: 0 0 0 transparent;
         }
         .links a:hover {
-          background-color: #2a2a2a;
-          transform: scale(1.05);
+            background-color: #2a2a2a;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #FF2138;
+        }
+        .services {
+            margin-top: 4rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 20px;
+            justify-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+            max-width: 900px;
+        }
+        .service {
+            background-color: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 0 10px #00000033;
+        }
+        .service h3 {
+            color: #FF2138;
+            margin-bottom: 0.5rem;
         }
         .pulse-circle, .extra-circle1, .extra-circle2 {
-          position: absolute;
-          border-radius: 50%;
-          background-color: #FF2138;
-          opacity: 0.3;
-          animation: pulse 6s infinite ease-in-out;
+            position: absolute;
+            border-radius: 50%;
+            background-color: #FF2138;
+            opacity: 0.3;
+            animation: pulse 6s infinite ease-in-out;
         }
         .pulse-circle {
-          width: 120px;
-          height: 120px;
-          bottom: 40px;
-          right: 40px;
-          opacity: 0.5;
+            width: 120px;
+            height: 120px;
+            bottom: 40px;
+            right: 40px;
+            opacity: 0.5;
         }
         .extra-circle1 {
-          width: 180px;
-          height: 180px;
-          top: 10%;
-          left: -60px;
-          animation-delay: 1s;
+            width: 180px;
+            height: 180px;
+            top: 10%;
+            left: -60px;
+            animation-delay: 1s;
         }
         .extra-circle2 {
-          width: 100px;
-          height: 100px;
-          top: 60%;
-          left: 80%;
-          animation-delay: 2s;
-        }
-        @keyframes pulse {
-          0%, 100% {
-            transform: scale(1);
-            opacity: 0.3;
-          }
-          50% {
-            transform: scale(1.4);
-            opacity: 0.1;
-          }
-        }
-
-        @media (max-width: 768px) {
-          h1 {
-            font-size: 2.5rem;
-          }
-          p {
-            font-size: 1rem;
-          }
-          .links a {
-            font-size: 0.9rem;
-            padding: 0.5rem 1rem;
-          }
-          .pulse-circle {
-            width: 80px;
-            height: 80px;
-            bottom: 20px;
-            right: 20px;
-          }
-          .extra-circle1 {
             width: 100px;
             height: 100px;
-            top: 5%;
-            left: -30px;
-          }
-          .extra-circle2 {
-            width: 60px;
-            height: 60px;
-            top: 70%;
-            left: 75%;
-          }
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.4); opacity: 0.1; }
+        }
+        @media (max-width: 768px) {
+            .services {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, auto);
+            }
+            h1 { font-size: 2.5rem; }
+            p { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
+
 <h1>Smich Studio</h1>
+<div class="typing">Делай просто. Делай с нами.</div>
 <p>Мы создаём визуал, который цепляет: логотипы, баннеры, интерфейсы, презентации. Всё — с вниманием к деталям, стилем и скоростью.</p>
-<p><em>Делай просто. Делай с нами.</em></p>
+
 <div class="links">
     <a href="https://t.me/smichstudio" target="_blank">Студия</a>
     <a href="https://t.me/smichrobot" target="_blank">Бот</a>
     <a href="https://t.me/smichadmin" target="_blank">Менеджер</a>
     <a href="https://t.me/tg_chekster" target="_blank">Владелец</a>
+    <a href="https://t.me/smichndesign" target="_blank">Новости</a>
 </div>
+
+<div class="services" id="services">
+    <div class="service"><h3>Логотипы</h3><p>Простые, стильные, запоминающиеся.</p></div>
+    <div class="service"><h3>Баннеры</h3><p>Под рекламу и соцсети. Быстро и ярко.</p></div>
+    <div class="service"><h3>Интерфейсы</h3><p>Прототипы и визуалы для приложений.</p></div>
+    <div class="service"><h3>Презентации</h3><p>Дизайн, который держит внимание.</p></div>
+    <div class="service"><h3>Обложки</h3><p>Для телеги, клипов и подкастов. Быстро, чётко, по трендам.</p></div>
+    <div class="service"><h3>Реклама</h3><p>Запускаем рекламу в Telegram под ключ.</p></div>
+    <div class="service"><h3>SMM</h3><p>Оформим и раскрутим Telegram-канал.</p></div>
+    <div class="service"><h3>Сценарии</h3><p>Пишем тексты для Reels, Shorts и TikTok.</p></div>
+</div>
+
 <div class="pulse-circle"></div>
 <div class="extra-circle1"></div>
 <div class="extra-circle2"></div>
+
+<script>
+    window.addEventListener('scroll', () => {
+        const block = document.getElementById('services');
+        const top = block.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            block.style.opacity = 1;
+            block.style.transform = 'translateY(0)';
+        }
+    });
+</script>
+
 </body>
 </html>
