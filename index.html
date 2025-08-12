@@ -1,187 +1,669 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smich Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f0f0f;
-            background-image: radial-gradient(#1a1a1a 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            padding: 4rem 2rem;
-            text-align: center;
-            overflow-x: hidden;
-            position: relative;
-        }
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            color: #FF2138;
-        }
-        .typing {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            height: 2.5rem;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid #FF2138;
-            animation: typing 3s steps(30) 1 normal both, blink 0.8s infinite;
-        }
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        @keyframes blink {
-            0%, 100% { border-color: transparent; }
-            50% { border-color: #FF2138; }
-        }
-        p {
-            max-width: 800px;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-        .links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        .links a {
-            color: #FF2138;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            background-color: #1a1a1a;
-            padding: 0.75rem 1.25rem;
-            border-radius: 999px;
-            transition: 0.3s ease;
-            box-shadow: 0 0 0 transparent;
-        }
-        .links a:hover {
-            background-color: #2a2a2a;
-            transform: scale(1.05);
-            box-shadow: 0 0 10px #FF2138;
-        }
-        .services {
-            margin-top: 4rem;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(2, auto);
-            gap: 20px;
-            justify-items: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease;
-            max-width: 900px;
-        }
-        .service {
-            background-color: #1a1a1a;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            text-align: center;
-            box-shadow: 0 0 10px #00000033;
-        }
-        .service h3 {
-            color: #FF2138;
-            margin-bottom: 0.5rem;
-        }
-        .pulse-circle, .extra-circle1, .extra-circle2 {
-            position: absolute;
-            border-radius: 50%;
-            background-color: #FF2138;
-            opacity: 0.3;
-            animation: pulse 6s infinite ease-in-out;
-        }
-        .pulse-circle {
-            width: 120px;
-            height: 120px;
-            bottom: 40px;
-            right: 40px;
-            opacity: 0.5;
-        }
-        .extra-circle1 {
-            width: 180px;
-            height: 180px;
-            top: 10%;
-            left: -60px;
-            animation-delay: 1s;
-        }
-        .extra-circle2 {
-            width: 100px;
-            height: 100px;
-            top: 60%;
-            left: 80%;
-            animation-delay: 2s;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.4); opacity: 0.1; }
-        }
-        @media (max-width: 768px) {
-            .services {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(4, auto);
-            }
-            h1 { font-size: 2.5rem; }
-            p { font-size: 1rem; }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smich Agency — услуги по продвижению в Telegram</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent: #FF263A;
+      --bg: #0f1720; /* dark background similar to modern sites */
+      --card: #0b0f14;
+      --muted: #98a0aa;
+      --glass: rgba(255,255,255,0.03);
+      --radius: 14px;
+      --maxw: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#05060a 0%, #071019 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+
+    .brand {
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),#ff6b78);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      box-shadow: 0 6px 18px rgba(255,38,58,0.14);
+    }
+    .brand h1{
+      font-size:18px;
+      margin:0;
+      letter-spacing:0.2px;
+    }
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    .top-actions{
+      margin-left:auto;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:0;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      background:var(--glass);
+      color:inherit;
+      font-weight:600;
+    }
+    .btn.accent{
+      background:linear-gradient(90deg,var(--accent),#ff6b78);
+      color:white;
+      box-shadow:0 8px 30px rgba(255,38,58,0.18);
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 380px;
+      gap:28px;
+      align-items:start;
+      margin-bottom:28px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: var(--radius);
+      padding:20px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+
+    /* Left column */
+    .main-panel .big-title{
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+    .big-title h2{margin:0;font-size:22px}
+    .big-title p{margin:0;color:var(--muted);font-size:13px}
+
+    .grid-buttons{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .grid-buttons button{
+      height:58px;
+      border-radius:12px;
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.03);
+      color:inherit;
+      font-weight:700;
+      cursor:pointer;
+      padding:10px;
+    }
+    .grid-buttons button:active{transform:translateY(1px)}
+
+    /* Services list */
+    .services{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+    }
+
+    .service-card{
+      padding:14px;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.014), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .service-card h4{margin:0 0 8px 0}
+    .service-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.4}
+    .service-card .price{margin-top:10px;font-weight:700;color:var(--accent)}
+
+    /* Right column */
+    .right-column .media{
+      height:260px;
+      border-radius:12px;
+      overflow:hidden;
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:flex-end;
+      justify-content:flex-start;
+      padding:18px;
+      color:white;
+    }
+    .right-column .media h3{margin:0}
+
+    .mini{
+      display:flex;
+      gap:12px;
+      margin-top:12px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .mini .small-card{
+      flex:1;
+      padding:12px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.02);
+      text-align:center;
+    }
+    .mini .small-card h5{margin:0;font-size:13px}
+    .mini .small-card p{margin:6px 0 0 0;color:var(--muted);font-size:12px}
+
+    /* Agreement / content area */
+    .content-area{
+      margin-top:18px;
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+    }
+    .content-main{
+      flex:1;
+    }
+
+    blockquote{
+      margin:8px 0 18px 0;
+      padding:12px 14px;
+      border-left:4px solid rgba(255,255,255,0.04);
+      background:rgba(255,255,255,0.01);
+      color:var(--muted);
+      border-radius:8px;
+      font-size:14px;
+    }
+
+    /* Footer */
+    footer{
+      margin-top:28px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Modals */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(2,6,23,0.6);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:60;
+      padding:20px;
+    }
+    .modal{
+      width:100%;
+      max-width:720px;
+      border-radius:12px;
+      padding:18px;
+      background:linear-gradient(180deg,#071019,#04121a);
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow:0 20px 60px rgba(2,6,23,0.7);
+      color:inherit;
+    }
+    .modal h3{margin:0 0 10px 0}
+    .modal .row{display:flex;gap:12px;align-items:center}
+    .modal input[type="text"]{
+      flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;
+    }
+    .modal .row .btn{height:44px}
+
+    /* small screens */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; grid-auto-rows:auto}
+      .services{grid-template-columns:1fr}
+      .grid-buttons{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width:520px){
+      .grid-buttons{grid-template-columns:1fr}
+      body{padding:16px}
+      .logo{width:46px;height:46px}
+    }
+
+  </style>
 </head>
 <body>
+  <div class="container">
 
-<h1>Smich Studio</h1>
-<div class="typing">Делай просто. Делай с нами.</div>
-<p>Мы создаём визуал, который цепляет: логотипы, баннеры, интерфейсы, презентации. Всё — с вниманием к деталям, стилем и скоростью.</p>
+    <header>
+      <a class="brand" href="#">
+        <div class="logo">TC</div>
+        <div>
+          <h1>Smich Agency</h1>
+          <p>Продвижение и монетизация Telegram-проектов</p>
+        </div>
+      </a>
 
-<div class="links">
-    <a href="https://t.me/smichstudio" target="_blank">Студия</a>
-    <a href="https://t.me/smichrobot" target="_blank">Бот</a>
-    <a href="https://t.me/smichadmin" target="_blank">Менеджер</a>
-    <a href="https://t.me/tg_chekster" target="_blank">Владелец</a>
-    <a href="https://t.me/smichndesign" target="_blank">Новости</a>
-</div>
+      <div class="top-actions">
+        <button class="btn" id="contactBtn">Связаться</button>
+        <button class="btn accent" id="startServicesBtn">Услуги</button>
+      </div>
+    </header>
 
-<div class="services" id="services">
-    <div class="service"><h3>Логотипы</h3><p>Простые, стильные, запоминающиеся.</p></div>
-    <div class="service"><h3>Баннеры</h3><p>Под рекламу и соцсети. Быстро и ярко.</p></div>
-    <div class="service"><h3>Интерфейсы</h3><p>Прототипы и визуалы для приложений.</p></div>
-    <div class="service"><h3>Презентации</h3><p>Дизайн, который держит внимание.</p></div>
-    <div class="service"><h3>Обложки</h3><p>Для телеги, клипов и подкастов. Быстро, чётко, по трендам.</p></div>
-    <div class="service"><h3>Реклама</h3><p>Запускаем рекламу в Telegram под ключ.</p></div>
-    <div class="service"><h3>SMM</h3><p>Оформим и раскрутим Telegram-канал.</p></div>
-    <div class="service"><h3>Сценарии</h3><p>Пишем тексты для Reels, Shorts и TikTok.</p></div>
-</div>
+    <main class="hero">
+      <section class="card main-panel">
+        <div class="big-title">
+          <div>
+            <h2>Главное меню</h2>
+            <p>Выберите раздел — интерфейс копирует логику твоего бота.</p>
+          </div>
+        </div>
 
-<div class="pulse-circle"></div>
-<div class="extra-circle1"></div>
-<div class="extra-circle2"></div>
+        <div class="grid-buttons" style="margin-top:18px;">
+          <button data-action="services">Услуги</button>
+          <button data-action="about">О нас</button>
+          <button data-action="agreement">Соглашение</button>
 
-<script>
-    window.addEventListener('scroll', () => {
-        const block = document.getElementById('services');
-        const top = block.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-            block.style.opacity = 1;
-            block.style.transform = 'translateY(0)';
-        }
+          <button data-action="vacancies">Вакансии</button>
+          <button data-action="benefit">Выгода</button>
+          <button data-action="promo">Промокод</button>
+        </div>
+
+        <div class="services" id="servicesList" style="margin-top:16px;">
+          <!-- service cards injected by JS -->
+        </div>
+
+        <div class="content-area">
+          <div class="content-main card" id="contentMain" style="min-height:180px;">
+            <!-- Dynamic content area (about/agreement/etc) -->
+            <h3>Добро пожаловать</h3>
+            <p style="color:var(--muted)">Нажмите кнопку меню слева, чтобы открыть раздел. Контакты — справа от логотипа.</p>
+          </div>
+
+          <aside class="right-column" style="width:320px">
+            <div class="card">
+              <div class="media" id="heroMedia" style="background-image:url('https://i.imgur.com/5u9F9qN.jpg')">
+                <div>
+                  <h3>Команда Smich Agency</h3>
+                  <p style="color:rgba(255,255,255,0.9);font-size:13px;margin-top:8px">Закуп рекламы · Креатив · Контент</p>
+                </div>
+              </div>
+
+              <div class="mini">
+                <div class="small-card">
+                  <h5>Рефералы</h5>
+                  <p id="refCount">0 приглашений</p>
+                </div>
+                <div class="small-card">
+                  <h5>Промокоды</h5>
+                  <p>3 тестовых</p>
+                </div>
+              </div>
+
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <aside class="card right-column" style="height:100%;">
+        <h3 style="margin-top:0">Контакт</h3>
+        <p style="color:var(--muted)">Свяжитесь в Telegram — нажмите кнопку:</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <a class="btn accent" id="contactLink" href="https://t.me/nayarek" target="_blank">Написать в Telegram</a>
+          <button class="btn" id="openReferral">Реферальная ссылка</button>
+        </div>
+
+        <hr style="margin:14px 0;border:0;border-top:1px solid rgba(255,255,255,0.02)" />
+        <h4>Кратко о нас</h4>
+        <p style="color:var(--muted);margin-top:8px">
+          Мы занимаемся продвижением и монетизацией проектов в Telegram: закуп рекламных мест, создание креативов и аналитика.
+        </p>
+
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <button class="btn" id="openPromo">Использовать промокод</button>
+          <button class="btn" id="openAgreement">Показать соглашение</button>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div style="max-width:var(--maxw);margin:0 auto">
+        © Smich Agency — интерфейс-демонстрация. Контакт: <a href="https://t.me/nayarek" style="color:var(--accent);text-decoration:none" target="_blank">@nayarek</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Modal backdrop -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" id="modal">
+      <!-- content filled by JS -->
+    </div>
+  </div>
+
+  <script>
+    /**********************************************************************
+     * Static data copied from bot code (CONTENT, PROMO_CODES, AGREEMENT_TEXT)
+     * This page validates promo codes client-side using the same test set.
+     **********************************************************************/
+    const CONTENT = {
+      "ads": {
+        title: "Закуп рекламы",
+        text: "Разберём вашу аудиторию: кто они, что им интересно и где их проще всего найти. Это даёт чёткий вектор и избавляет от слива бюджета на случайные охваты.\n\nОбеспечим стабильный приток качественных подписчиков по адекватной цене. Всё прозрачно — отчётность ведём в Google-таблице, вы в любой момент видите, что и как работает. Берём на себя рутину и оптимизируем расходы.",
+        price: "15-25% от бюджета",
+        image: "https://i.imgur.com/1m6bQ1w.jpg"
+      },
+      "creative": {
+        title: "Рекламный креатив",
+        text: "Создадим рекламный текст с картинкой или без. Если конверсия низкая — меняем креатив, чтобы добиться лучшей цены за подписчика. Подберём пару каналов для теста.",
+        price: "от 5,000₽",
+        image: "https://i.imgur.com/8QW0x2u.jpg"
+      },
+      "content": {
+        title: "Контент для канала",
+        text: "Возьмём на себя наполнение канала — от идеи до публикации. Учитываем стиль и целевую аудиторию, чтобы контент работал эффективно.",
+        price: "от 7,000₽ в месяц",
+        image: "https://i.imgur.com/2XJ7mGq.jpg"
+      },
+      "full_channel": {
+        title: "Канал под ключ",
+        text: "Выберем тематику и концепцию канала под рынок и цели. Составим стратегию монетизации и финансовую модель, чтобы было понятно, как проект будет зарабатывать. Услуга включает дизайн, креатив, закуп рекламы и контент.",
+        price: "15-25% от бюджета",
+        image: "https://i.imgur.com/6v2z7Q0.jpg"
+      },
+      "guarantee": {
+        title: "Гарант сделок",
+        text: "Обеспечим безопасную сделку: примем оплату на себя и удержим её до момента, пока всё не будет подтверждено. Проследим, чтобы обе стороны выполнили условия.",
+        price: "2-10% от суммы",
+        image: "https://i.imgur.com/3w1kV7M.jpg"
+      },
+      "consult": {
+        title: "Консультация",
+        text: "Разберёмся в вашей ситуации и целях. Поможем взглянуть на задачи по-новому, найдём слабые места и точки роста. Когда картина прояснится — перейдём к решениям.",
+        price: "5,000₽",
+        image: "https://i.imgur.com/WvY9N5v.jpg"
+      }
+    };
+
+    const PROMO_CODES = new Set(["КУПИСКА228", "TELEGRAM2025", "DISCOUNT50"].map(c=>c.toUpperCase()));
+
+    const AGREEMENT_TEXT = `
+      <h3>Пользовательское соглашение</h3>
+      <b>1. Общие положения</b>
+      <blockquote>Определяет условия оказания услуг и взаимодействия между Агентством и Клиентом.</blockquote>
+      <b>2. Предмет</b>
+      <blockquote>Агентство выполняет маркетинговые и сопутствующие работы по согласованному заданию.</blockquote>
+      <b>3. Обязанности</b>
+      <blockquote>Агентство: выполнять работу качественно, информировать о ходе, предоставлять отчёты. Клиент: давать нужные данные, оплачивать в срок.</blockquote>
+      <b>4. Оплата</b>
+      <blockquote>Стоимость и порядок оплаты указываются в коммерческом предложении. Агентство не отвечает за работу сторонних сервисов.</blockquote>
+      <b>5. Права</b>
+      <blockquote>Права на материалы передаются Клиенту после полной оплаты, если иное не оговорено.</blockquote>
+      <b>6. Ответственность</b>
+      <blockquote>Стороны не отвечают при форс-мажоре. Агентство не гарантирует конкретных результатов при внешних факторах.</blockquote>
+      <b>7. Споры</b>
+      <blockquote>Решаются переговорами, при недостижении — по закону.</blockquote>
+      <b>8. Заключение</b>
+      <blockquote>Соглашение действует с момента принятия до исполнения обязательств.</blockquote>
+    `;
+
+    // Initialize UI
+    const servicesList = document.getElementById('servicesList');
+    const contentMain = document.getElementById('contentMain');
+    const heroMedia = document.getElementById('heroMedia');
+    const refCountEl = document.getElementById('refCount');
+
+    // Render services
+    for (const key of Object.keys(CONTENT)) {
+      const s = CONTENT[key];
+      const div = document.createElement('div');
+      div.className = 'service-card';
+      div.innerHTML = `
+        <h4>${s.title}</h4>
+        <p>${s.text.split("\\n")[0]}</p>
+        <div class="price">${s.price}</div>
+        <div style="margin-top:10px;display:flex;gap:8px">
+          <button class="btn" data-service="${key}">Подробнее</button>
+          <a class="btn" href="https://t.me/nayarek" target="_blank">Обсудить</a>
+        </div>
+      `;
+      servicesList.appendChild(div);
+    }
+
+    // Menu button handlers
+    document.querySelectorAll('[data-action]').forEach(btn=>{
+      btn.addEventListener('click', ()=> openSection(btn.dataset.action));
     });
-</script>
+    document.getElementById('startServicesBtn').addEventListener('click', ()=> openSection('services'));
+    document.getElementById('contactBtn').addEventListener('click', ()=> window.open('https://t.me/nayarek','_blank'));
+    document.getElementById('openPromo').addEventListener('click', ()=> openPromoModal());
+    document.getElementById('openAgreement').addEventListener('click', ()=> openSection('agreement'));
+    document.getElementById('openReferral').addEventListener('click', ()=> openReferralModal());
+    document.getElementById('contactLink').addEventListener('click', ()=> {/* link already set */});
 
+    // Service detail buttons
+    document.body.addEventListener('click', (e)=>{
+      const svc = e.target.closest('[data-service]');
+      if (svc) {
+        const key = svc.dataset.service;
+        const s = CONTENT[key];
+        showServiceDetail(s);
+      }
+    });
+
+    function openSection(name){
+      if (name === 'services') {
+        contentMain.innerHTML = `<h3>Наши услуги</h3><p style="color:var(--muted)">Выберите услугу внизу или нажмите «Обсудить» для связи в Telegram.</p>`;
+        heroMedia.style.backgroundImage = "url('https://i.imgur.com/1m6bQ1w.jpg')";
+        return;
+      }
+      if (name === 'about') {
+        contentMain.innerHTML = `
+          <h3>Давайте знакомиться!</h3>
+          <p style="color:var(--muted)">Мы занимаемся продвижением и монетизацией проектов в Telegram. Помогаем привлечь целевую аудиторию, снизить цену подписчика и настроить механики монетизации.</p>
+          <p style="color:var(--muted)">Берём на себя закуп рекламы, создание креативов и аналитику. Вы получаете понятную отчётность и готовую систему для роста.</p>
+        `;
+        heroMedia.style.backgroundImage = "url('https://i.imgur.com/5u9F9qN.jpg')";
+        return;
+      }
+      if (name === 'agreement') {
+        contentMain.innerHTML = AGREEMENT_TEXT;
+        heroMedia.style.backgroundImage = "url('https://i.imgur.com/0Xk3d1y.jpg')";
+        return;
+      }
+      if (name === 'vacancies') {
+        contentMain.innerHTML = `
+          <h3>Вакансии</h3>
+          <p style="color:var(--muted)">Если у вас есть опыт в каком-либо направлении работы в Telegram, свяжитесь с нами — обсудим возможное сотрудничество.</p>
+          <a class="btn" href="https://t.me/nayarek" target="_blank">Связаться</a>
+        `;
+        heroMedia.style.backgroundImage = "url('https://i.imgur.com/7rF8R0Z.jpg')";
+        return;
+      }
+      if (name === 'benefit') {
+        contentMain.innerHTML = `
+          <h3>Выгода от работы с нами</h3>
+          <ul style="color:var(--muted);line-height:1.6">
+            <li>Проверенные механики закупа и оптимизация бюджета</li>
+            <li>Понятная отчётность и контроль эффективности</li>
+            <li>Комплексный подход: креативы + закуп + контент</li>
+          </ul>
+        `;
+        heroMedia.style.backgroundImage = "url('https://i.imgur.com/6v2z7Q0.jpg')";
+        return;
+      }
+      if (name === 'promo') {
+        openPromoModal();
+        return;
+      }
+    }
+
+    function showServiceDetail(s){
+      contentMain.innerHTML = `
+        <h3>${s.title}</h3>
+        <p style="color:var(--muted);white-space:pre-line">${s.text}</p>
+        <div style="margin-top:12px">
+          <div class="price">${s.price}</div>
+          <div style="margin-top:12px">
+            <a class="btn accent" href="https://t.me/nayarek" target="_blank">Обсудить</a>
+            <button class="btn" id="backToServices">⬅ Назад</button>
+          </div>
+        </div>
+      `;
+      heroMedia.style.backgroundImage = `url('${s.image}')`;
+      // Back handler
+      setTimeout(()=>{
+        const back = document.getElementById('backToServices');
+        if (back) back.addEventListener('click', ()=> openSection('services'));
+      },50);
+    }
+
+    // Modal helpers
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modal = document.getElementById('modal');
+
+    function openModal(html){
+      modal.innerHTML = html;
+      modalBackdrop.style.display = 'flex';
+      modalBackdrop.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden','true');
+    }
+    modalBackdrop.addEventListener('click', (e)=>{
+      if (e.target === modalBackdrop) closeModal();
+    });
+
+    // Promo modal
+    function openPromoModal(){
+      openModal(`
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3>Ввести промокод</h3>
+          <button class="btn" id="closeModalX">✕</button>
+        </div>
+        <p style="color:var(--muted)">Отправьте ваш промокод — если код валиден, покажем скидку.</p>
+        <div style="margin-top:12px" class="row">
+          <input id="promoInput" type="text" placeholder="Введите промокод">
+          <button class="btn accent" id="promoApplyBtn">Применить</button>
+        </div>
+        <div id="promoResult" style="margin-top:12px;color:var(--muted)"></div>
+      `);
+      document.getElementById('closeModalX').addEventListener('click', closeModal);
+      document.getElementById('promoApplyBtn').addEventListener('click', applyPromoFromModal);
+      document.getElementById('promoInput').addEventListener('keydown',(e)=>{ if(e.key==='Enter') applyPromoFromModal() });
+      document.getElementById('promoInput').focus();
+    }
+
+    function applyPromoFromModal(){
+      const val = document.getElementById('promoInput').value.trim().toUpperCase();
+      const result = document.getElementById('promoResult');
+      if (!val) { result.textContent = 'Введите промокод'; return; }
+      if (PROMO_CODES.has(val)){
+        result.innerHTML = `<div style="color:#bdf2d1">✅ Промокод принят! Скидка: 10% — применена к заказу.</div>`;
+        // Note: real application should notify server / mark promo used
+      } else {
+        result.innerHTML = `<div style="color:#ffb3b9">❌ Неверный или устаревший промокод.</div>`;
+      }
+    }
+
+    // Referral modal
+    let refCount = 0;
+    function openReferralModal(){
+      openModal(`
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3>Генерация реферальной ссылки</h3>
+          <button class="btn" id="closeModalRef">✕</button>
+        </div>
+        <p style="color:var(--muted)">Введите ваш ID (число) — мы сгенерируем ссылку для приглашений.</p>
+        <div style="margin-top:12px" class="row">
+          <input id="refIdInput" type="text" placeholder="Ваш user_id (напр. 12345678)">
+          <button class="btn accent" id="createRefBtn">Создать</button>
+        </div>
+        <div id="refResult" style="margin-top:12px;color:var(--muted)"></div>
+        <hr style="margin-top:12px;border:0;border-top:1px solid rgba(255,255,255,0.02)">
+        <div style="color:var(--muted);margin-top:12px">
+          <b>Бот-username:</b> <input id="botUsername" value="thechek" style="background:transparent;border:1px solid rgba(255,255,255,0.03);color:inherit;padding:6px;border-radius:6px;width:120px">
+          <div style="font-size:12px;margin-top:8px;color:var(--muted)">Если бот имеет другой username — замените поле перед созданием.</div>
+        </div>
+      `);
+
+      document.getElementById('closeModalRef').addEventListener('click', closeModal);
+      document.getElementById('createRefBtn').addEventListener('click', createReferralLink);
+      document.getElementById('refIdInput').addEventListener('keydown',(e)=>{ if(e.key==='Enter') createReferralLink() });
+    }
+
+    function createReferralLink(){
+      const idVal = document.getElementById('refIdInput').value.trim();
+      const botUser = document.getElementById('botUsername').value.trim() || 'thechek';
+      const refResult = document.getElementById('refResult');
+
+      if (!/^\d+$/.test(idVal)) {
+        refResult.innerHTML = `<div style="color:#ffb3b9">Введите корректный числовой ID (user_id).</div>`;
+        return;
+      }
+      const link = `https://t.me/${botUser}?start=ref${idVal}`;
+      refResult.innerHTML = `
+        <div style="display:flex;gap:8px;align-items:center">
+          <input type="text" value="${link}" id="refLinkField" style="flex:1;background:transparent;border:1px solid rgba(255,255,255,0.03);padding:8px;border-radius:8px;color:inherit">
+          <button class="btn" id="copyRefBtn">Копировать</button>
+        </div>
+        <div style="margin-top:8px;color:var(--muted)">Поделитесь ссылкой — за приглашения предусмотрены бонусы.</div>
+      `;
+      document.getElementById('copyRefBtn').addEventListener('click', ()=>{
+        const fld = document.getElementById('refLinkField');
+        fld.select();
+        document.execCommand('copy');
+        alert('Ссылка скопирована в буфер обмена');
+        // increment local counter - only visual
+        refCount++;
+        refCountEl.textContent = `${refCount} приглашений`;
+      });
+    }
+
+    // Simple keyboard nav for service buttons (like InlineKeyboard)
+    document.addEventListener('keydown', (e)=>{
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // initial landing state
+    openSection('services');
+
+    // NOTE: For real integration you'd send form data to your server,
+    // which would call Telegram Bot API methods to:
+    //  - notify admin (sendMessage)
+    //  - validate/mark promo codes as used
+    //  - record referrals and attribution
+    //
+    // This static page only simulates client-side UI and validations.
+
+  </script>
 </body>
 </html>
