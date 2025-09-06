@@ -9,93 +9,79 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #fff;
+      background: #fafafa;
       color: #222;
       line-height: 1.6;
-      word-wrap: break-word;
-      overflow-x: hidden;
     }
     header {
+      background: #111;
+      color: #fff;
       text-align: center;
-      padding: 40px 20px;
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      margin: 0;
       font-size: 2rem;
-      font-weight: bold;
     }
     .container {
-      width: 100%;
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 20px;
-      box-sizing: border-box;
+      padding: 1rem;
     }
     .service {
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #eee;
+      background: #fff;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
     .service h2 {
+      margin-top: 0;
       font-size: 1.2rem;
-      margin-bottom: 10px;
     }
-    .service p {
-      font-size: 1rem;
-      margin: 8px 0;
-    }
-    .links {
-      text-align: center;
-      margin: 40px 0;
+    .buttons {
       display: flex;
       justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
       flex-wrap: wrap;
-      gap: 10px;
     }
-    .links a {
-      flex: 1 1 auto;
-      max-width: 150px;
-      text-align: center;
+    .buttons a {
       text-decoration: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      background: #111;
       color: #fff;
-      background: #222;
-      border-radius: 6px;
-      padding: 10px 20px;
       font-size: 0.95rem;
-      box-sizing: border-box;
+      transition: background 0.3s;
+    }
+    .buttons a:hover {
+      background: #444;
     }
     footer {
       text-align: center;
-      font-size: 0.9rem;
-      color: #555;
-      padding: 20px;
+      font-size: 0.85rem;
+      color: #666;
+      padding: 2rem 1rem;
     }
     @media (max-width: 600px) {
-      header {
+      header h1 {
         font-size: 1.5rem;
-        padding: 20px 10px;
-      }
-      .container {
-        padding: 15px;
       }
       .service h2 {
-        font-size: 1rem;
+        font-size: 1.05rem;
       }
-      .service p {
-        font-size: 0.9rem;
-      }
-      .links {
-        gap: 8px;
-      }
-      .links a {
-        flex: 1 1 45%;
-        max-width: none;
-        padding: 12px;
-        font-size: 1rem;
+      .buttons a {
+        flex: 1;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
-  <header>The Smich</header>
-
+  <header>
+    <h1>The Smich</h1>
+  </header>
   <div class="container">
     <div class="service">
       <h2>💰 Закуп рекламы</h2>
@@ -103,42 +89,36 @@
       <p>Обеспечу стабильный приток качественных подписчиков по адекватной цене. Всё прозрачно — отчётность веду в Google-таблице, вы в любой момент видите, что и как работает. Беру на себя рутину и оптимизирую расходы.</p>
       <p><strong>Стоимость:</strong> 15-25% от бюджета</p>
     </div>
-
     <div class="service">
       <h2>💡 Рекламный креатив</h2>
       <p>Создам рекламный текст с картинкой или без. Если конверсия низкая — меняю креатив, чтобы добиться лучшей цены за подписчика. Подберу пару каналов для теста.</p>
       <p><strong>Стоимость:</strong> от 5,000₽</p>
     </div>
-
     <div class="service">
       <h2>✈️ Канал под ключ</h2>
       <p>Выберу тематику и концепцию канала под рынок и цели. Составлю стратегию монетизации и финансовую модель, чтобы было понятно, как проект будет зарабатывать.</p>
       <p>Услуга включает в себя дизайн, рекламный креатив, закуп рекламы и контент. Помогу с продажей рекламы и выведу канал на самоокупаемость.</p>
       <p><strong>Стоимость:</strong> 15-25% от бюджета</p>
     </div>
-
     <div class="service">
       <h2>✅ Гарант сделок</h2>
       <p>Обеспечу безопасную сделку: приму оплату на себя и удержу её до момента, пока всё не будет подтверждено.</p>
       <p>Прослежу, чтобы обе стороны выполнили условия. Исключу риски, споры и обман.</p>
       <p><strong>Стоимость:</strong> 2-10% от суммы</p>
     </div>
-
     <div class="service">
       <h2>💬 Консультация</h2>
       <p>Разберусь в вашей ситуации и целях. Помогу взглянуть на задачи по-новому, найду слабые места и точки роста. Когда картина прояснится — перейдём к решениям.</p>
       <p>Поделюсь опытом, подскажу, как двигаться дальше. Отвечу честно и по делу на любые вопросы.</p>
       <p><strong>Стоимость:</strong> 5,000₽</p>
     </div>
-
-    <div class="links">
+    <div class="buttons">
       <a href="https://t.me/smichag" target="_blank">Telegram</a>
       <a href="https://t.me/nayarek" target="_blank">Владелец</a>
     </div>
   </div>
-
   <footer>
-    © The Smich
+    © 2025 The Smich
   </footer>
 </body>
 </html>
